@@ -13,9 +13,9 @@ Now convert the model function into a GVar function.
 ```
 gvar_model = convert_fixed_input(model)
 ```
-The `gvar_model` function that is returned by `convert_fixed_input` can now be evaluated at a point `x`. For example, 
+The `gvar_model` function that is returned by `convert_fixed_input` can now be evaluated at a point `x`. For example, if `x=3`,
 ```
 import gvar
 print(gvar_model([3.], [gvar.gvar(1., 0.) for p in range(13)]))
 ```
-will produce `[19(0)]`. The argument in `range` is the number of "trainable" parameters that belong to the Keras/TensorFlow model that we created above.
+will produce `[19(0)]`. The argument in `range` is the number of "trainable" parameters that belong to the Keras/TensorFlow model that we created above. The `gvar_model` function can now be used in a `GVar` analysis pipeline; most notably, the parameters of the TensorFlow model can be extracted from a least squares fit using `Lsqfit`. 
